@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
   public void PlayGame()
   {
     // Load the next scene
-    UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    UnityEngine.SceneManagement.SceneManager.LoadScene("GameplayScene");
   }
 
 
