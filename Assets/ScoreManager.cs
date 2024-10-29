@@ -5,10 +5,17 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
 
     private int score = 0;
+    private int scoreAdd = 1;
+
+    public BuyButton buyButton;
 
     void Start()
     {
         UpdateScoreText();
+        if (buyButton.farmBought == true)
+        {
+            scoreAdd = 2;
+        }
     }
 
     void UpdateScoreText()
@@ -25,7 +32,8 @@ public class ScoreManager : MonoBehaviour
 
     public void OnBananaClicked()
     {
-        score += 1;
+        score += scoreAdd;
+        
         UpdateScoreText();
     }
 }
