@@ -12,10 +12,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         UpdateScoreText();
-        if (buyButton.farmBought == true)
-        {
-            scoreAdd = 2;
-        }
+        CheckUpgrades();
     }
 
     void UpdateScoreText()
@@ -36,4 +33,13 @@ public class ScoreManager : MonoBehaviour
         
         UpdateScoreText();
     }
+
+    void CheckUpgrades()
+    {
+        if (BuyButton.Instance != null && BuyButton.Instance.farmBought)
+        {
+            scoreAdd = 2;
+        }
+    }
+
 }

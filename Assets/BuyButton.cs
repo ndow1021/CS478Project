@@ -50,4 +50,19 @@ public class BuyButton : MonoBehaviour
         GoldenNumberOwned.text = "Number Owned: " + goldenCount;
     }
 
+    public static BuyButton Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
