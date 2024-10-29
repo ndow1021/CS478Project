@@ -465,11 +465,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167556795}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
 --- !u!1 &171991784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,23 +1084,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
-      - m_Target: {fileID: 710174554}
+      - m_Target: {fileID: 710174551}
         m_TargetAssemblyTypeName: BuyButton, Assembly-CSharp
         m_MethodName: BuyBanana
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-=======
-      - m_Target: {fileID: 11500000, guid: 345cc76548fcaa247af9f003ece2b1d8, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1149,10 +1134,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622909329}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
 --- !u!1 &667854322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,8 +1218,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 710174552}
+  - component: {fileID: 710174551}
   - component: {fileID: 710174553}
-  - component: {fileID: 710174554}
   m_Layer: 0
   m_Name: BuyButtonController
   m_TagString: Untagged
@@ -1246,6 +1227,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &710174551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710174550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345cc76548fcaa247af9f003ece2b1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FarmNumberOwned: {fileID: 343848529}
+  farmBought: 0
+  BananaNumberOwned: {fileID: 1350258015}
+  bananaBought: 0
+  MonkeyNumberOwned: {fileID: 171991786}
+  monkeyBought: 0
+  GoldenNumberOwned: {fileID: 960242036}
+  goldenBought: 0
 --- !u!4 &710174552
 Transform:
   m_ObjectHideFlags: 0
@@ -1274,31 +1275,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScreen: GameplayScene
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
---- !u!114 &710174554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710174550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 345cc76548fcaa247af9f003ece2b1d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FarmNumberOwned: {fileID: 343848529}
-  farmBought: 0
-  BananaNumberOwned: {fileID: 1350258015}
-  bananaBought: 0
-  MonkeyNumberOwned: {fileID: 171991786}
-  monkeyBought: 0
-  GoldenNumberOwned: {fileID: 960242036}
-  goldenBought: 0
-=======
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
 --- !u!1 &712373948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,10 +1350,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712373948}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
 --- !u!1 &755438837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,7 +1691,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 710174554}
+      - m_Target: {fileID: 710174551}
         m_TargetAssemblyTypeName: BuyButton, Assembly-CSharp
         m_MethodName: BuyFarm
         m_Mode: 1
@@ -3049,11 +3021,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508080060}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
 --- !u!1 &1608398376
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,23 +3104,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
-      - m_Target: {fileID: 710174554}
+      - m_Target: {fileID: 710174551}
         m_TargetAssemblyTypeName: BuyButton, Assembly-CSharp
         m_MethodName: BuyGolden
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-=======
-      - m_Target: {fileID: 11500000, guid: 345cc76548fcaa247af9f003ece2b1d8, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3197,10 +3154,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608398376}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
 --- !u!1 &1609839862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,11 +3800,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
 --- !u!1 &2107571509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3935,23 +3883,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
-      - m_Target: {fileID: 710174554}
+      - m_Target: {fileID: 710174551}
         m_TargetAssemblyTypeName: BuyButton, Assembly-CSharp
         m_MethodName: BuyMonkey
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-=======
-      - m_Target: {fileID: 11500000, guid: 345cc76548fcaa247af9f003ece2b1d8, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3995,10 +3933,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107571509}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> a6e11edfbb9c0e0c0340a78b8b4dfbf25efb904d
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
