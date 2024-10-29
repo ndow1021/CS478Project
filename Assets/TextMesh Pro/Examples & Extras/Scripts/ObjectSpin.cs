@@ -51,9 +51,9 @@ namespace TMPro.Examples
             {
                 m_time += SpinSpeed * Time.deltaTime;
 
-                float x = 15 * Mathf.Cos(m_time * .95f);
+                float x = 15;//  * Mathf.Cos(m_time * .95f);
                 float y = 10; // *Mathf.Sin(m_time * 1f) * Mathf.Cos(m_time * 1f);
-                float z = 0f; // *Mathf.Sin(m_time * .9f);    
+                float z = 15 *Mathf.Sin(m_time * .9f);    
 
                 m_transform.position = m_initial_Position + new Vector3(x, z, y);
 
