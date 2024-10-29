@@ -842,6 +842,7 @@ GameObject:
   - component: {fileID: 1286058495}
   - component: {fileID: 1286058494}
   - component: {fileID: 1286058497}
+  - component: {fileID: 1286058498}
   m_Layer: 5
   m_Name: Bananna
   m_TagString: Untagged
@@ -976,6 +977,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
+--- !u!114 &1286058498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286058492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f19c7f94c794c5097d8bd11e39c750d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpinSpeed: 5
+  RotationRange: 15
+  Motion: 0
 --- !u!1 &1409430837
 GameObject:
   m_ObjectHideFlags: 0
