@@ -8,19 +8,19 @@ public class BuyButton : MonoBehaviour
 {
     public TextMeshProUGUI FarmNumberOwned;
     public bool farmBought = false;
-    private int farmCount = 0;
+    public int farmCount = 0;
 
     public TextMeshProUGUI BananaNumberOwned;
     public bool bananaBought = false;
-    private int bananaCount = 0;
+    public int bananaCount = 0;
 
     public TextMeshProUGUI MonkeyNumberOwned;
     public bool monkeyBought = false;
-    private int monkeyCount = 0;
+    public int monkeyCount = 0;
 
     public TextMeshProUGUI GoldenNumberOwned;
     public bool goldenBought = false;
-    private int goldenCount = 0;
+    public int goldenCount = 0;
 
     public void BuyFarm()
     {
