@@ -36,7 +36,7 @@ public class BuyButton : MonoBehaviour
         farmBought = true;
         farmCount += 1;
         FarmNumberOwned.text = "Number Owned: " + farmCount;
-        farmPrice = (int)Math.Pow(20,1 + farmCount);
+        farmPrice = 20 * (int)Math.Pow(2,1 + farmCount);
         FarmCost.text = "Cost: " + farmPrice + " Bananas";
     }
 
@@ -45,6 +45,8 @@ public class BuyButton : MonoBehaviour
         bananaBought = true;
         bananaCount += 1;
         BananaNumberOwned.text = "Number Owned: " + bananaCount;
+        bananaPrice = 2000 * (int)Math.Pow(2, 1 + bananaCount);
+        BananaCost.text = "Cost: " + bananaPrice + " Bananas";
     }
 
     public void BuyMonkey()
@@ -52,6 +54,8 @@ public class BuyButton : MonoBehaviour
         monkeyBought = true;
         monkeyCount += 1;
         MonkeyNumberOwned.text = "Number Owned: " + monkeyCount;
+        monkeyPrice = 1000 * (int)Math.Pow(2, 1 + monkeyCount);
+        MonkeyCost.text = "Cost: " + monkeyPrice + " Bananas";
     }
 
     public void BuyGolden()
@@ -59,6 +63,8 @@ public class BuyButton : MonoBehaviour
         goldenBought = true;
         goldenCount += 1;
         GoldenNumberOwned.text = "Number Owned: " + goldenCount;
+        goldenPrice = 200 * (int)Math.Pow(2, 1 + goldenCount);
+        GoldenCost.text = "Cost: " + goldenPrice + " Bananas";
     }
 
     public static BuyButton Instance;
