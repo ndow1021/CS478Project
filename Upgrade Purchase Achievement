@@ -1,0 +1,49 @@
+using System;
+
+public class Player
+{
+	public int UpgradeCount { get; private set; }
+	
+	public event Action OnUpgradePurchased;
+	
+	public void PerchaseUpgrade()
+	{
+		UpgradeCount++;
+		Console.WriteLine("First Upgrade Bought!!");
+		OnUpgradePurchased?.Invoke();
+	}
+	
+}
+
+public class AchievementManager
+{
+	private bool firstUpgradeAchievementUnlocked; 
+	
+	public AchievementManager(Player player)
+	{
+		player.OnUpgradePurchased += CheckFirstUpgradeAchievement;
+	}
+	
+	private void CheckFirstUpgradeAchievement()
+	{
+		if (!firstUpgradeAchievementUnlocked)
+		{
+			unlockedUpgradeAchievement();
+		}
+	}
+	
+	private void UnlockedUpgradeAchievement()
+	{
+		firstUpgradeAchievementUnlocked = true;
+		Console.WriteLine("Achievement Unlocked: First Upgrade - You Purchased Your First Upgrade!");
+	}
+}
+//Example
+public class Program
+{
+	public static void Main()
+	{
+		Player player = new Player();
+		AchievementManager achievementManager = new AchievementManager(player);
+	}
+}
