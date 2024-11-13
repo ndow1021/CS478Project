@@ -977,6 +977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
+  buyButton: {fileID: 0}
 --- !u!114 &1286058498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,6 +1125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 299344858}
+  buyButton: {fileID: 0}
 --- !u!1 &1475838134
 GameObject:
   m_ObjectHideFlags: 0
