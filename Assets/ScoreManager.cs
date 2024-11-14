@@ -73,4 +73,13 @@ public class ScoreManager : MonoBehaviour
     {
         LoadScore();  // Load the score when the game object is enabled
     }
+
+    public void ResetScore()
+    {
+        score = 0; // Set score to zero
+        UpdateScoreText(); // Update the score display
+        SaveScore(); // Optionally save the reset score
+    }
+
+
 }
