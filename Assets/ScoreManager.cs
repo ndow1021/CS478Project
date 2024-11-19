@@ -17,8 +17,8 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
         CheckUpgrades();
     }
-
-    void UpdateScoreText()
+    
+    void UpdateScoreText() // Updates the score text in the main gamplay scene
     {
         if (scoreText != null)
         {
@@ -41,7 +41,11 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.Save();  // Make sure to save PlayerPrefs
     }
 
-    public void OnBananaClicked()
+
+    // Trigger event when the bananna is clicked it
+    // increments the score by 1 multiplied or added
+    // by the upgrades the user has
+    public void OnBananaClicked() 
     {
         score = score + (scoreAdd * scoreMultiply);
         
