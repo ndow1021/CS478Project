@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class BuyButton : MonoBehaviour
 {
+    [SerializeField] private returnButton returnButtonScript;
+
     public TextMeshProUGUI FarmNumberOwned;
     public TextMeshProUGUI FarmCost;
     public bool farmBought = false;
@@ -35,36 +38,33 @@ public class BuyButton : MonoBehaviour
     {
         farmBought = true;
         farmCount += 1;
-        FarmNumberOwned.text = "Number Owned: " + farmCount;
-        farmPrice = 20 * (int)Math.Pow(2,1 + farmCount);
-        FarmCost.text = "Cost: " + farmPrice + " Bananas";
+        farmPrice = 20 * (int)Math.Pow(2, 1 + farmCount);
+        Debug.Log("Farm upgrade bought");
+        UpdateUI();
     }
 
     public void BuyBanana()
     {
         bananaBought = true;
         bananaCount += 1;
-        BananaNumberOwned.text = "Number Owned: " + bananaCount;
         bananaPrice = 2000 * (int)Math.Pow(2, 1 + bananaCount);
-        BananaCost.text = "Cost: " + bananaPrice + " Bananas";
+        UpdateUI();
     }
 
     public void BuyMonkey()
     {
         monkeyBought = true;
         monkeyCount += 1;
-        MonkeyNumberOwned.text = "Number Owned: " + monkeyCount;
         monkeyPrice = 1000 * (int)Math.Pow(2, 1 + monkeyCount);
-        MonkeyCost.text = "Cost: " + monkeyPrice + " Bananas";
+        UpdateUI();
     }
 
     public void BuyGolden()
     {
         goldenBought = true;
         goldenCount += 1;
-        GoldenNumberOwned.text = "Number Owned: " + goldenCount;
         goldenPrice = 200 * (int)Math.Pow(2, 1 + goldenCount);
-        GoldenCost.text = "Cost: " + goldenPrice + " Bananas";
+        UpdateUI();
     }
 
     public static BuyButton Instance;
@@ -75,11 +75,76 @@ public class BuyButton : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else
+
+        } else if (Instance != this)
         {
+            UpdateOnClicks();
             Destroy(gameObject);
         }
+        
+    }
+
+    private void UpdateOnClicks()
+    {
+        Button FarmButton = GameObject.Find("FarmButton").GetComponent<Button>();
+        FarmButton.onClick.AddListener(Instance.BuyFarm);
+
+        Button BananaClickerButton = GameObject.Find("Banana Clicker Button").GetComponent<Button>();
+        BananaClickerButton.onClick.AddListener(Instance.BuyBanana);
+
+        Button MonkeyHelperButton = GameObject.Find("MonkeyHelperButton").GetComponent<Button>();
+        MonkeyHelperButton.onClick.AddListener(Instance.BuyMonkey);
+
+        Button GoldenBananaButton = GameObject.Find("GoldenBananaButton").GetComponent<Button>();
+        GoldenBananaButton.onClick.AddListener(Instance.BuyGolden);
+
+        Button ReturnButton = GameObject.Find("ReturnButton").GetComponent<Button>();
+        ReturnButton.onClick.AddListener(returnButtonScript.ReturnButton);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        Debug.Log("The scene is loaded");
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        Debug.Log("The scene is unloaded");
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        FarmNumberOwned = GameObject.Find("FarmNumberOwned").GetComponent<TextMeshProUGUI>();
+        FarmCost = GameObject.Find("FarmCost").GetComponent<TextMeshProUGUI>();
+
+        BananaNumberOwned = GameObject.Find("OwnedBananaClickers").GetComponent<TextMeshProUGUI>();
+        BananaCost = GameObject.Find("BananaClickerCost").GetComponent<TextMeshProUGUI>();
+
+        MonkeyNumberOwned = GameObject.Find("OwnedMonkeyClickers").GetComponent<TextMeshProUGUI>();
+        MonkeyCost = GameObject.Find("MonkeyHelperCost").GetComponent<TextMeshProUGUI>();
+
+        GoldenNumberOwned = GameObject.Find("OwnedGoldenBanana").GetComponent<TextMeshProUGUI>();
+        GoldenCost = GameObject.Find("GoldenBananaCost").GetComponent<TextMeshProUGUI>();
+
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        if (FarmNumberOwned != null) FarmNumberOwned.text = "Number Owned: " + farmCount;
+        if (FarmCost != null) FarmCost.text = "Cost: " + farmPrice + " Bananas";
+
+        if (BananaNumberOwned != null) BananaNumberOwned.text = "Number Owned: " + bananaCount;
+        if (BananaCost != null) BananaCost.text = "Cost: " + bananaPrice + " Bananas";
+
+        if (MonkeyNumberOwned != null) MonkeyNumberOwned.text = "Number Owned: " + monkeyCount;
+        if (MonkeyCost != null) MonkeyCost.text = "Cost: " + monkeyPrice + " Bananas";
+
+        if (GoldenNumberOwned != null) GoldenNumberOwned.text = "Number Owned: " + goldenCount;
+        if (GoldenCost != null) GoldenCost.text = "Cost: " + goldenPrice + " Bananas";
+        Debug.Log("the UI has been updated");
     }
 
 }
