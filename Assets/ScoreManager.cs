@@ -1,5 +1,8 @@
 using UnityEngine;
 using TMPro;
+using System;
+using System.Linq.Expressions;
+using UnityEngine.Scripting;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -20,7 +23,7 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Score text component not assigned.");
+            //Debug.Log("Score text component not assigned.");  // Change back to LogError before pushing.
         }
     }
 
@@ -38,6 +41,26 @@ public class ScoreManager : MonoBehaviour
     public void OnBananaClicked()
     {
         score += 1;
+
+        FirstBananaClickAchievement firstBananaClickAchievementInstance = new FirstBananaClickAchievement();
+        HundredBananaClicksAchievement hundredBananaClicksAchievementInstance = new HundredBananaClicksAchievement();
+        ThousandBananaClicksAchievement thousandBananaClicksAchievementInstance = new ThousandBananaClicksAchievement();
+
+        if (!firstBananaClickAchievementInstance.hasBeenUnlocked)
+        {
+            // need to fix CheckAchievementGoal methods
+            if (score >= 1) { firstBananaClickAchievementInstance.setAchievementStatusUnlocked(); }
+        }
+        if (!hundredBananaClicksAchievementInstance.hasBeenUnlocked)
+        {
+            if (score >= 100) { hundredBananaClicksAchievementInstance.setAchievementStatusUnlocked(); }
+        }
+        if (!thousandBananaClicksAchievementInstance.hasBeenUnlocked)
+        {
+            if (score >= 1000) { thousandBananaClicksAchievementInstance.setAchievementStatusUnlocked(); }
+        }
+
+        
         UpdateScoreText();
     }
 
