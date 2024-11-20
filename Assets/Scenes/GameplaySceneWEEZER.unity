@@ -1211,7 +1211,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2089012913}
         m_TargetAssemblyTypeName: shopButton, Assembly-CSharp
-        m_MethodName: ShopButton
+        m_MethodName: ShopButtonWEEZER
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1493,6 +1493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopScreen: ShopWEEZER
+  shopScreenWEEZER: ShopWEEZER
 --- !u!4 &2089012914
 Transform:
   m_ObjectHideFlags: 0
