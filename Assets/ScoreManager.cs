@@ -20,13 +20,14 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Score text component not assigned.");
+            //Debug.LogError("Score text component not assigned.");
+            scoreText = null;
         }
     }
 
     void LoadScore()
     {
-        score = PlayerPrefs.GetInt("CurrentScore", 0);  // Loads score, default to 0 if not set
+        score = 0; //PlayerPrefs.GetInt("CurrentScore", 0);  // Loads score, default to 0 if not set
     }
 
     public void SaveScore()

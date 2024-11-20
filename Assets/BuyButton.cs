@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class BuyButton : MonoBehaviour
 {
+    bool farmBought;
     public void BuyFarm()
     {
-        bool farmBought = true;
+        farmBought = true;
     }
 }
