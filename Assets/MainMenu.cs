@@ -25,6 +25,11 @@ public class MainMenu : MonoBehaviour
 
   }
 
+    public void AchievementsPage()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("AchievementsScene");
+    }
+
     public void QuitGame()
     {
         // Quit the game

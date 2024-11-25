@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
 
     public BuyButton buyButton;
 
+    public AchievementsDefinitionsClass achievementsObject = new();
+
     void Start()
     {
         LoadScore();
@@ -26,7 +28,7 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Score text component not assigned.");
+            Debug.Log("Score text component not assigned.");
         }
     }
 
@@ -48,7 +50,9 @@ public class ScoreManager : MonoBehaviour
     public void OnBananaClicked() 
     {
         score = score + (scoreAdd * scoreMultiply);
-        
+
+        CheckAchievements();
+
         UpdateScoreText();
     }
 
@@ -64,6 +68,39 @@ public class ScoreManager : MonoBehaviour
         {
             scoreMultiply = 2;
             scoreMultiply = (int)Math.Pow(scoreMultiply, BuyButton.Instance.bananaCount);
+        }
+    }
+
+    void CheckAchievements() {
+        try {
+            bool firstClickHasBeenUnlocked = achievementsObject.achievementsDictionary["FirstClickAchievement"].Item2;
+            bool hundredClicksHasBeenUnlocked = achievementsObject.achievementsDictionary["HundredClicksAchievement"].Item2;
+            bool bananaBonanzaHasBeenUnlocked = achievementsObject.achievementsDictionary["BananaBonanzaAchievement"].Item2;
+            bool hundredThousandClicksHasBeenUnlocked = achievementsObject.achievementsDictionary["HundredThousandBananasAchievement"].Item2;
+
+            if (!firstClickHasBeenUnlocked) {
+                if (score >= 1) {
+                    achievementsObject.setAchievementStatusUnlocked("FirstClickAchievement");
+                }
+            }
+            if (!hundredClicksHasBeenUnlocked) {
+                if (score >= 100) {
+                    achievementsObject.setAchievementStatusUnlocked("HundredClicksAchievement");
+                }
+            }
+            if (!bananaBonanzaHasBeenUnlocked) {
+                if (score >= 1000) {
+                    achievementsObject.setAchievementStatusUnlocked("BananaBonanzaAchievement");
+                }
+            }
+            if (!hundredThousandClicksHasBeenUnlocked) {
+                if (score == 100000) {
+                    achievementsObject.setAchievementStatusUnlocked("HundredThousandBananasAchievement");
+                }
+            }
+        }
+        catch (NullReferenceException e) {
+            Debug.Log(e.Message + ": ScoreManager.cs in CheckAchievements()");
         }
     }
 
@@ -84,6 +121,4 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText(); // Update the score display
         SaveScore(); // Optionally save the reset score
     }
-
-
 }
