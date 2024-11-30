@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     private int score = 0;
     private int scoreAdd = 1;
     private int scoreMultiply = 1;
+    private int scorePerSecond = 0;
+    private float timeReset = 0.0f;
 
     public BuyButton buyButton;
 
@@ -65,6 +67,23 @@ public class ScoreManager : MonoBehaviour
             scoreMultiply = 2;
             scoreMultiply = (int)Math.Pow(scoreMultiply, BuyButton.Instance.bananaCount);
         }
+
+        if (BuyButton.Instance != null && BuyButton.Instance.monkeyBought)
+        {
+            scorePerSecond = BuyButton.Instance.monkeyCount;
+        }
+
+    }
+
+    void Update()
+    {
+        timeReset += Time.deltaTime;  
+        if (timeReset >= 1.0f)       //it counts up to a second then resets 
+        {
+            score += scorePerSecond; //When a second passes it will add to the score based on how many monkey helpers are owned
+            timeReset -= 1.0f;
+        }
+        UpdateScoreText();
     }
 
 
