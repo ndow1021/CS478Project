@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: a596ed20a4922c94cbddf42309ebc49b
+  - enabled: 1
+    path: Assets/Scenes/ShopWEEZER.unity
+    guid: 230c4805e57cfb3498af0a804b094733
+  - enabled: 1
+    path: Assets/Scenes/GameplaySceneWEEZER.unity
+    guid: e70cee282ebc868479970776af1bf2fd
   m_configObjects: {}
