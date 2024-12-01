@@ -31,6 +31,8 @@ public class BuyButton : MonoBehaviour
     public int goldenCount = 0;
     public int goldenPrice = 1000;
 
+    public AchievementsDefinitionsClass achievementsObject = new AchievementsDefinitionsClass();
+
     public void BuyFarm()
     {
         farmBought = true;
@@ -38,6 +40,20 @@ public class BuyButton : MonoBehaviour
         FarmNumberOwned.text = "Number Owned: " + farmCount;
         farmPrice = (int)Math.Pow(20,1 + farmCount);
         FarmCost.text = "Cost: " + farmPrice + " Bananas";
+
+        bool plantTenTreesHasBeenUnlocked = achievementsObject.achievementsDictionary["PlantTenTreesAchievement"].Item2;
+        bool plantHundredTreesHasBeenUnlocked = achievementsObject.achievementsDictionary["PlantHundredTreesAchievement"].Item2;
+        if (!plantTenTreesHasBeenUnlocked) {
+            if (farmCount == 1) {
+                achievementsObject.setAchievementStatusUnlocked("PlantTenTreesAchievement");
+            }
+        }
+
+        if (!plantHundredTreesHasBeenUnlocked) {
+            if (farmCount == 100) {
+                achievementsObject.setAchievementStatusUnlocked("PlantHundredTreesAchievement");
+            }
+        }
     }
 
     public void BuyBanana()
@@ -45,6 +61,21 @@ public class BuyButton : MonoBehaviour
         bananaBought = true;
         bananaCount += 1;
         BananaNumberOwned.text = "Number Owned: " + bananaCount;
+
+        bool firstBananaRocketHasBeenUnlocked = achievementsObject.achievementsDictionary["LaunchBananaRocketFirstTimeAchievement"].Item2;
+        bool fiftyBananaRocketsHasBeenUnlocked = achievementsObject.achievementsDictionary["LaunchBananaRocketFiftyTimesAchievement"].Item2;
+
+        if (!firstBananaRocketHasBeenUnlocked) {
+            if (bananaCount == 1) {
+                achievementsObject.setAchievementStatusUnlocked("LaunchBananaRocketFirstTimeAchievement");
+            }
+        }
+
+        if (!fiftyBananaRocketsHasBeenUnlocked) {
+            if (bananaCount == 50) {
+                achievementsObject.setAchievementStatusUnlocked("LaunchBananaRocketFiftyTimesAchievement");
+            }
+        }
     }
 
     public void BuyMonkey()
@@ -52,13 +83,37 @@ public class BuyButton : MonoBehaviour
         monkeyBought = true;
         monkeyCount += 1;
         MonkeyNumberOwned.text = "Number Owned: " + monkeyCount;
+
+        bool firstMonkeyHelperHasBeenUnlocked = achievementsObject.achievementsDictionary["FirstMonkeyHelperAchievement"].Item2;
+        bool helperArmyHasBeenUnlocked = achievementsObject.achievementsDictionary["ObtainFiftyMonkeyHelpersAchievement"].Item2;
+
+        if (!firstMonkeyHelperHasBeenUnlocked) {
+            if (monkeyCount == 1) {
+                achievementsObject.setAchievementStatusUnlocked("FirstMonkeyHelperAchievement");
+            }
+        }
+
+        if (!helperArmyHasBeenUnlocked) {
+            if (monkeyCount == 50) {
+                achievementsObject.setAchievementStatusUnlocked("ObtainFiftyMonkeyHelpersAchievement");
+            }
+        }
     }
 
     public void BuyGolden()
+
     {
         goldenBought = true;
         goldenCount += 1;
         GoldenNumberOwned.text = "Number Owned: " + goldenCount;
+
+        bool goldenBananaHasBeenUnlocked = achievementsObject.achievementsDictionary["UseGoldenBananaAchievement"].Item2;
+
+        if (!goldenBananaHasBeenUnlocked) {
+            if (goldenCount == 1) {
+                achievementsObject.setAchievementStatusUnlocked("UseGoldenBananaAchievement");
+            }
+        }
     }
 
     public static BuyButton Instance;
@@ -75,5 +130,4 @@ public class BuyButton : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }
