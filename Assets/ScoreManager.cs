@@ -5,11 +5,15 @@ using System;
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI goldenBananaCount;
+    public TextMeshProUGUI goldenTimer;
     private int score = 0;
     private int scoreAdd = 1;
     private int scoreMultiply = 1;
     private int scorePerSecond = 0;
     private float timeReset = 0.0f;
+    private float goldenTime = 0.0f;
+    private bool goldenActive = false;
 
     public BuyButton buyButton;
 
@@ -18,6 +22,7 @@ public class ScoreManager : MonoBehaviour
         LoadScore();
         UpdateScoreText();
         CheckUpgrades();
+        
     }
     
     void UpdateScoreText() // Updates the score text in the main gamplay scene
@@ -49,13 +54,20 @@ public class ScoreManager : MonoBehaviour
     // by the upgrades the user has
     public void OnBananaClicked() 
     {
-        score = score + (scoreAdd * scoreMultiply);
+        if (goldenActive == false)
+        {
+            score = score + (scoreAdd * scoreMultiply);
+        }
+        else
+        {
+            score = score + (scoreAdd * scoreMultiply * 2); //if golden is active it will multiply by 2
+        }
         
         UpdateScoreText();
     }
 
 
-    void CheckUpgrades()
+    void CheckUpgrades() //if the shop has been visted and these updgrades have been bought they will activate
     {
         if (BuyButton.Instance != null && BuyButton.Instance.farmBought)
         {
@@ -73,20 +85,33 @@ public class ScoreManager : MonoBehaviour
             scorePerSecond = BuyButton.Instance.monkeyCount;
         }
 
+        if (BuyButton.Instance != null && BuyButton.Instance.goldenBought) 
+        {
+            goldenBananaCount.text = "Golden Bananas: " + BuyButton.Instance.currentGolden;
+        }
+
+
     }
 
     void Update()
     {
-        timeReset += Time.deltaTime;  
+        timeReset += Time.deltaTime;
         if (timeReset >= 1.0f)       //it counts up to a second then resets 
         {
             score += scorePerSecond; //When a second passes it will add to the score based on how many monkey helpers are owned
             timeReset -= 1.0f;
+            UpdateScoreText();
         }
-        UpdateScoreText();
+        if (goldenTime > 0.0f) //when golden is active there is text that will countdown until its over
+        {
+             goldenActive = true;
+             goldenTime -= Time.deltaTime;
+             goldenTimer.text = "Time left: " + goldenTime;
+        }
+        
+                
     }
-
-
+        
     void OnDisable()
     {
         SaveScore();  // Save the score when the game object is disabled or the scene is unloaded
@@ -104,5 +129,18 @@ public class ScoreManager : MonoBehaviour
         SaveScore(); // Optionally save the reset score
     }
 
+    public void GoldenBananaButton()
+    {
+        if(BuyButton.Instance.currentGolden > 0) //if a golden banana is owned you can click the button to start a 2x mult for 60 seconds
+        {
+            goldenTime += 60.0f;
+            BuyButton.Instance.currentGolden -= 1;
+            goldenBananaCount.text = "Golden Bananas: " + BuyButton.Instance.currentGolden;
+        }
+        else //if the golden count is zero the text will change to this when the button is pressed
+        {
+            goldenBananaCount.text = "No Golden Owned";
+        }
 
+    }
 }

@@ -31,9 +31,11 @@ public class BuyButton : MonoBehaviour
     public TextMeshProUGUI GoldenNumberOwned;
     public TextMeshProUGUI GoldenCost;
     public bool goldenBought = false;
-    public int goldenCount = 0;
+    public int goldenCount = 0;  //this will show how many have been bought in total
     public int goldenPrice = 1000;
+    public int currentGolden = 0; //this number will be subtracted from when the player wants to use thier golden banana
 
+    //the upgrade will be set to true, and the upgrade cost will be changed based on the formula
     public void BuyFarm()
     {
         farmBought = true;
@@ -55,7 +57,7 @@ public class BuyButton : MonoBehaviour
     {
         monkeyBought = true;
         monkeyCount += 1;
-        monkeyPrice = 1000 * (int)Math.Pow(2, 1 + monkeyCount);
+        monkeyPrice = 200 * (int)Math.Pow(2, 1 + monkeyCount);
         UpdateUI();
     }
 
@@ -63,10 +65,12 @@ public class BuyButton : MonoBehaviour
     {
         goldenBought = true;
         goldenCount += 1;
-        goldenPrice = 200 * (int)Math.Pow(2, 1 + goldenCount);
+        currentGolden += 1;
+        goldenPrice = 1000 * (int)Math.Pow(2, 1 + goldenCount);
         UpdateUI();
     }
-
+    
+    //makes it so the numbers in the shop will be remembered and accessable in the gameplay scene
     public static BuyButton Instance;
 
     private void Awake()
@@ -84,7 +88,7 @@ public class BuyButton : MonoBehaviour
         
     }
 
-    private void UpdateOnClicks()
+    private void UpdateOnClicks() //when the shop is returned to it was deleting the on click command so this readds them
     {
         Button FarmButton = GameObject.Find("FarmButton").GetComponent<Button>();
         FarmButton.onClick.AddListener(Instance.BuyFarm);
@@ -114,7 +118,7 @@ public class BuyButton : MonoBehaviour
         Debug.Log("The scene is unloaded");
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) //The text from text mesh pro was also being unlinked so this relinks them
     {
         FarmNumberOwned = GameObject.Find("FarmNumberOwned").GetComponent<TextMeshProUGUI>();
         FarmCost = GameObject.Find("FarmCost").GetComponent<TextMeshProUGUI>();
