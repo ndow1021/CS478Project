@@ -1,18 +1,24 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     private int score = 0;
+    private int scoreAdd = 1;
+    private int scoreMultiply = 1;
+
+    public BuyButton buyButton;
 
     void Start()
     {
         LoadScore();
         UpdateScoreText();
+        CheckUpgrades();
     }
-
-    void UpdateScoreText()
+    
+    void UpdateScoreText() // Updates the score text in the main gamplay scene
     {
         if (scoreText != null)
         {
@@ -35,11 +41,32 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.Save();  // Make sure to save PlayerPrefs
     }
 
-    public void OnBananaClicked()
+
+    // Trigger event when the bananna is clicked it
+    // increments the score by 1 multiplied or added
+    // by the upgrades the user has
+    public void OnBananaClicked() 
     {
-        score += 1;
+        score = score + (scoreAdd * scoreMultiply);
+        
         UpdateScoreText();
     }
+
+
+    void CheckUpgrades()
+    {
+        if (BuyButton.Instance != null && BuyButton.Instance.farmBought)
+        {
+            scoreAdd = BuyButton.Instance.farmCount + 1;
+        }
+
+        if (BuyButton.Instance != null && BuyButton.Instance.bananaBought)
+        {
+            scoreMultiply = 2;
+            scoreMultiply = (int)Math.Pow(scoreMultiply, BuyButton.Instance.bananaCount);
+        }
+    }
+
 
     void OnDisable()
     {
@@ -50,4 +77,13 @@ public class ScoreManager : MonoBehaviour
     {
         LoadScore();  // Load the score when the game object is enabled
     }
+
+    public void ResetScore()
+    {
+        score = 0; // Set score to zero
+        UpdateScoreText(); // Update the score display
+        SaveScore(); // Optionally save the reset score
+    }
+
+
 }
