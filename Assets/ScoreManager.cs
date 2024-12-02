@@ -33,13 +33,14 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Score text component not assigned.");
+            //Debug.LogError("Score text component not assigned.");
         }
     }
 
     void LoadScore()
     {
         score = PlayerPrefs.GetInt("CurrentScore", 0);  // Loads score, default to 0 if not set
+        Debug.Log("Loaded score " + " in gameplay");
     }
 
     public void SaveScore()
@@ -62,7 +63,7 @@ public class ScoreManager : MonoBehaviour
         {
             score = score + (scoreAdd * scoreMultiply * 2); //if golden is active it will multiply by 2
         }
-        
+        SaveScore();
         UpdateScoreText();
     }
 
@@ -96,9 +97,10 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         timeReset += Time.deltaTime;
-        if (timeReset >= 1.0f)       //it counts up to a second then resets 
+        if (BuyButton.Instance != null && BuyButton.Instance.monkeyBought && timeReset >= 1.0f)       //it counts up to a second then resets 
         {
             score += scorePerSecond; //When a second passes it will add to the score based on how many monkey helpers are owned
+            SaveScore();
             timeReset -= 1.0f;
             UpdateScoreText();
         }
@@ -111,15 +113,24 @@ public class ScoreManager : MonoBehaviour
         
                 
     }
-        
-    void OnDisable()
-    {
+                                     
+    void OnDisable()            
+    {     //prevents the banana (which for some reason doesnt get the score updated on itself) from also saving the score                           
+        if (gameObject.tag == "BananaTag") //which lead to a 50/50 chance of the score being reset back to whatever it was 
+        {                                  //when the gameplay scene was loaded
+            Debug.Log("Banana OnDisable() skipped"); 
+            return;
+        }
+
         SaveScore();  // Save the score when the game object is disabled or the scene is unloaded
+        Debug.Log("score in gameplay saved as " + score);
+        Debug.Log("OnDisable called by " + gameObject.name);
     }
 
     void OnEnable()
     {
         LoadScore();  // Load the score when the game object is enabled
+        Debug.Log("score loaded in game");
     }
 
     public void ResetScore()
